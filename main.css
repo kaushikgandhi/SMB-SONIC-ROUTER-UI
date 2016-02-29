@@ -1,0 +1,247 @@
+   #main{
+            padding: 5px;
+        }
+        #header{
+            text-align: right;
+            border: 1px solid silver;
+            padding: 2px 30px 10px 10px;
+        }
+        #header .header-title{
+            float: left;
+            padding: 5px;
+            top: 8px;
+            position: relative;
+            font-weight: bold;
+        }
+        #body{
+            padding: 20px;
+            border: 1px solid #C0C0C0;
+            border-top-width: 0px;
+        }
+
+        .wgt,
+        .ui-state-highlight{
+            width: 250px;
+            height: 350px;
+            display: inline-block;
+            border: 0px solid #C0C0C0;
+            margin: 10px;
+        }
+
+        .wgt-master{
+            width: 75px;
+            height: 50px;
+            display: inline-block;
+            vertical-align: top;
+            border: 0px solid #C0C0C0;
+            border-radius: 4px;
+            margin: 5px;
+        }
+
+        .wgt-master:hover{
+            cursor: pointer;
+        }
+        .wgt-master .front{
+            height: 100%;
+            border-radius: 4px;
+            font-weight: normal;
+            text-align: center;
+            background-color: #F5F5F5;
+            box-shadow: 0 0 10px #E8E8E8;
+        }
+        .wgt-master .back{
+            display: none;
+        }
+
+        .front{
+            border: 1px solid #C0C0C0;
+            padding: 5px;
+            font-weight: bold;
+            background-color: #e1e1e1;
+            box-shadow: 0 0 10px #E8E8E8;
+            border-radius: 4px;
+        }
+        .back{
+            border: 1px solid #afafaf;
+            padding: 5px;
+            height: 100%;
+            background-color: #C0C0C0;
+            box-shadow: 0 0 10px #E8E8E8;
+            border-radius: 4px;
+        }
+        #draggable{
+            width: 275px;
+            display: none;
+            position: absolute;
+            z-index: 2;
+            background-color: #FFF;
+            border: 1px solid #C0C0C0;
+            border-radius: 5px;
+            padding: 5px;
+        }
+        hr {
+            border-top: 1px solid #C0C0C0;
+        }
+
+        #btnWifi,
+        #btnNotify,
+        #wgtSelector{
+            padding: 8px;
+            border-radius: 4px;
+        }
+        #btnWifi,
+        #btnNotify{
+            border: 1px solid #C0C0C0;
+            margin: 0px 5px;
+            vertical-align: middle;
+            height: 30px;
+            width: 30px;
+            display: inline-block;
+        }
+
+        #btnWifi{
+            background: url("images/wifi-16.png") no-repeat 5px 5px;
+        }
+        #btnNotify{
+            background: url("images/alert.png") no-repeat 5px 5px;
+        }
+        #wgtSelector{
+            margin-left: 30px;
+            font-size: 25px;
+            top: 8px;
+        }
+
+        .arrow_box {
+            position: relative;
+            background: #white;
+            border: 1px solid silver;
+        }
+        .arrow_box:after, .arrow_box:before {
+            bottom: 100%;
+            left: 50%;
+            border: solid transparent;
+            content: " ";
+            height: 0;
+            width: 0;
+            position: absolute;
+            pointer-events: none;
+        }
+
+        .arrow_box:after {
+            border-color: rgba(0, 0, 0, 0);
+            border-bottom-color: white;
+            border-width: 14px;
+            margin-left: -14px;
+        }
+        .arrow_box:before {
+            border-color: rgba(0, 0, 0, 0);
+            border-bottom-color: silver;
+            border-width: 15px;
+            margin-left: -15px;
+        }
+
+
+        .numberCircle {
+            border-radius: 50%;
+            width: 20px;
+            height: 20px;
+            padding: 4px;
+            background: silver;
+            /* border: 1px solid #000; */
+            color: #000;
+            text-align: center;
+            font: 12px Arial, sans-serif;
+            top: -15px;
+            position: relative;
+            left: 10px;
+        }
+        /*-------- bootstrap overrides ------------- */
+        .dropdown{
+            display: inline-block;
+        }
+        .tooltip-override + .tooltip > .tooltip-inner {background-color: #4e4e4e;}
+
+    #dragabble li .front center{
+        display: none;
+    }
+
+    .setup-top-div{
+        min-height: 420px;
+        background-color: #E8E8E8;
+        padding-top: 10px;
+        padding-right: 40px;
+        padding-left: 40px;
+        padding-bottom: 10px;
+    }
+    .setup-top-div h1{
+        text-align: center;
+        font-size: 24px;
+    }
+    .setup-top-div h1 .fa{
+        font-size: 45px;
+    }
+    .dotted-line{
+        border: 1px dashed #000;
+        margin-top: 10px;
+        margin-bottom: 10px;
+    }
+    .setup-top-div h2{
+        
+        font-size: 18px;
+    }
+    .modal-container{
+        margin-left: 10%;
+        margin-right: 10%;
+    }
+    .modal-footer .steps{
+        font-size: 48px;
+        margin-left: 10%;
+    }
+    .steps .fa{
+        margin-right: 35px;
+        color: #ccc;
+    }
+
+    .steps .fa.active{
+        
+        color: #000;
+    }
+
+    .modal-footer{
+        text-align: center;
+    } 
+    .modal-footer .progress{
+        margin-top: 22px;
+    }
+    .small-text{
+        font-size: 18px;
+        
+    }
+
+    .icons-large-set .font-large{
+        font-size: 58px;
+    }
+    .table-services-div{
+        overflow-y:scroll;
+        height: 180px;
+    }
+    .table-services tr{
+        background-color: #FFF;
+        width:100%;
+    }
+    .table-services .width70{
+        width:70%;
+    }
+    .table-services .width30{
+        width:30%;
+    }
+    .green{
+        color: green;
+    }
+
+    .table-services .width60{
+        width:60%;
+    }
+    .table-services .width20{
+        width:20%;
+    }

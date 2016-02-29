@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta charset="UTF-8">
+    <title>SMB UI</title>
+
+   <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.4/jquery-ui.min.js"></script>
+
+<!--    <script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
+     <script src="https://code.jquery.com/ui/1.10.4/jquery-ui.min.js"></script>-->
+
+    <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+    <script src="https://cdn.rawgit.com/nnattawat/flip/v1.0.19/dist/jquery.flip.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.5/angular.min.js"></script>
+    <script src="jquery_load.js"></script>
+    <script src="app.js"></script>
+
+    <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.4/themes/smoothness/jquery-ui.css">
+    <link rel="stylesheet" href="main.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+   <link href="bootstrap-switch.css" rel="stylesheet">
+   <script src="bootstrap-switch.js"></script>
+</head>
+<body ng-app="DashboardApp">
+
+<div id="main" ng-controller="homePageController">
+    <div id="header">
+        <form class="form-inline" role="form">
+
+            <span class="header-title">Dell SonicWALL | Small Business</span>
+
+            <div class="form-group" ng-controller="searchController">
+                <div class="form-group has-feedback">
+                    <label class="control-label" for="btnSearch">&nbsp;</label>
+                    <input type="text" id="btnSearch" class="form-control tooltip-override" placeholder="Search" data-toggle="tooltipX" data-placement="bottom" titleX="Type keywords to search and filter widgets" ng-model="search_box" ng-keyup="handle_keyup()"/>
+                    <span class="glyphicon glyphicon-search form-control-feedback"></span>
+                </div>
+            </div>
+
+
+            <span id="btnWifi" class=""></span>
+            <span id="btnNotify" class=""><div class="numberCircle">5</div></span>
+
+            <span id="wgtSelector" class="glyphicon glyphicon-th tooltip-override" data-toggle="tooltip" data-placement="bottom" title="Drag and Drop widgets to main viewport below"></span>
+
+
+            <div class="dropdown">
+                <button class="btn btn-default dropdown-toggle" type="button" data-toggle="dropdown">
+                    <span class="glyphicon glyphicon-user"></span>&nbsp;&nbsp;&nbsp;Sonic User&nbsp;&nbsp;&nbsp;
+                    <span class="caret"></span>
+                </button>
+                <ul class="dropdown-menu">
+                    <li><a href="#">Profile</a></li>
+                    <li><a href="#">Upgrade Firmaware</a></li>
+                    <li><a href="#">Advance Mode</a></li>
+                    <li><a href="#">Log Out</a></li>
+                </ul>
+            </div>
+        </form>
+    </div>
+    <div id="body">
+        <ul id="draggable" class="arrow_box" >
+            <li class='wgt-master ng-cloak' ng-repeat="panel in dragabble_panels"><div class='front'>{{panel}}</div><div class='back'>{{panel}}-back</div></li>
+        </ul>
+        <hr>
+        <ul id="sortable" class='wgt-container'>
+             <li class='wgt ng-cloak' ng-repeat="panel in panels">
+             <div class='front'>{{panel}}
+             <center style="margin-top:40px;">
+             <button  class="btn btn-primary btn-lg" data-toggle="modal" data-target="#myModal">Start</button>
+             </center>
+             </div>
+             <div class='back'>{{panel}}-back</div>
+             </li>
+        </ul>
+    </div>
+    <div id="footer"></div>
+</div>
+
+<!-- Modal -->
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" ng-controller="modalController">
+  <div class="modal-dialog modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-body">
+             <ng-include src="step"> </ng-include>
+      </div>
+      <div class="modal-footer">
+        <div class="steps">
+            <div class="col-md-1">
+            <i ng-if="active_state=='get_started'" class="fa fa-hand-peace-o active"></i>
+            <i ng-if="active_state!='get_started'" class="fa fa-hand-peace-o"></i>
+            </div>
+            <div class="col-md-2">
+                <div class="progress">
+                  <div class="progress-bar" role="progressbar" aria-valuenow="0"
+                  aria-valuemin="0" aria-valuemax="100" style="width:{{progress1}}%">
+                    <span class="sr-only">10% Complete</span>
+                  </div>
+                </div>
+            </div>
+            <div class="col-md-1">
+                <i class="fa fa-pencil-square active" ng-if="active_state=='register'"></i>
+                <i class="fa fa-pencil-square " ng-if="active_state!='register'"></i>
+            </div>
+            <div class="col-md-2">
+                <div class="progress">
+                  <div class="progress-bar" role="progressbar" aria-valuenow="70"
+                  aria-valuemin="0" aria-valuemax="100" style="width:{{progress2}}%">
+                    <span class="sr-only">0% Complete</span>
+                  </div>
+                </div>
+            </div>
+            <div class="col-md-1">
+            <i class="fa fa-cogs" ng-if="active_state!='services'"></i>
+           <i class="fa fa-cogs active" ng-if="active_state=='services'"></i>
+
+            </div>
+            <div class="col-md-2">
+                <div class="progress">
+                  <div class="progress-bar" role="progressbar" aria-valuenow="0"
+                  aria-valuemin="0" aria-valuemax="100" style="width:{{progress3}}%">
+                    <span class="sr-only">0% Complete</span>
+                  </div>
+                </div>
+            </div>
+            <div class="col-md-3 pull-left">
+            <i class="fa fa-tasks" ng-if="active_state!='summary'"></i>
+            <i class="fa fa-tasks active" ng-if="active_state=='summary'"></i>
+            </div>
+        </div>
+        <div class="clearfix"></div>
+        <div class="row" style="margin-left:1%; margin-right:1%;">
+            <div class="col-md-3">
+                 <div class="small-text">Get Started <i class="fa fa-check-circle green" ng-if="get_started_completed"></i></div>
+            </div>
+             <div class="col-md-3">
+                 <div class="small-text">Register <i class="fa fa-check-circle green" ng-if="register_completed"></i></div>
+            </div>
+             <div class="col-md-3">
+                  <div class="small-text">Services
+                    <i class="fa fa-check-circle green" ng-if="services_completed"></i>
+                  </div>
+            </div>
+             <div class="col-md-3">
+                 <div class="small-text">Summary</div>
+            </div>
+        </div>
+         <div class="clearfix"></div><br>
+        <button class="btn btn-lg btn-primary" ng-click="goBack()" ng-if="step!='step1.html'"><< Back </button>
+        <button class="btn btn-lg btn-primary" ng-click="stepValidator()"><i class="fa fa-save" ></i> Save & Next >> </button>
+        
+      </div>
+    </div>
+  </div>
+</div>
+</body>
+</html>
